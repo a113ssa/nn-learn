@@ -8,6 +8,7 @@ from pathlib import Path
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 
+# convert 8 bit values to floats between 0 and 1
 def normalize_data(data):
     return data.astype('float32') / 255
 
@@ -15,9 +16,11 @@ def normalize_data(data):
 x_train = normalize_data(x_train)
 x_test = normalize_data(x_test)
 
+# convert class vectors to binary class matrices
 y_train = keras.utils.to_categorical(y_train, 10)
 y_test = keras.utils.to_categorical(y_test, 10)
 
+# create model and add layers
 model = Sequential(
     [
         Conv2D(32, (3, 3), padding='same',
@@ -38,10 +41,27 @@ model = Sequential(
     ]
 )
 
+# compile model
 model.compile(
     loss='categorical_crossentropy',
     optimizer='adam',
     metrics=['accuracy'],
 )
+
+# train model
+model.fit(
+    x_train,
+    y_train,
+    batch_size=32,
+    epochs=30,
+    validation_data=(x_test, y_test),
+    shuffle=True,
+)
+
+# save model structure to json
+Path('model_structure.json').write_text(model.to_json())
+
+# save model weights to hdf5
+model.save_weights('model_weights.h5')
 
 model.summary()
