@@ -59,9 +59,9 @@ model.fit(
 )
 
 # save model structure to json
-Path('model_structure.json').write_text(model.to_json())
+Path('image_recognition/saved_model/model_structure.json').write_text(model.to_json())
 
 # save model weights to hdf5
-model.save_weights('model_weights.h5')
+model.save_weights('image_recognition/saved_model/model_weights.h5')
 
 model.summary()

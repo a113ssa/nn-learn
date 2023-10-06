@@ -1,7 +1,6 @@
 import numpy as np
 from keras.models import model_from_json
 from support_methods import prepare_image, print_prediction
-
 from pathlib import Path
 
 class_labels = [
@@ -17,12 +16,13 @@ class_labels = [
     'Truck',
 ]
 
-model = model_from_json(Path('model_structure.json').read_text())
+model = model_from_json(
+    Path('image_recognition/saved_model/model_structure.json').read_text())
 
-model.load_weights('model_weights.h5')
+model.load_weights('image_recognition/saved_model/model_weights.h5')
 
-img1 = prepare_image('meme_cat.png')
-img2 = prepare_image('meme_roach.png')
+img1 = prepare_image('images/meme_cat.png')
+img2 = prepare_image('images/meme_roach.png')
 
 list_of_images = [np.expand_dims(img1, axis=0), np.expand_dims(img2, axis=0)]
 
