@@ -1,6 +1,4 @@
 # nn-learn
 
-- [Simple Perceptron in Python](perceptron.py)
-- [Simple Multilayer Perceptron in Python](multi_layer_perceptron.py)
-- [Simple Deep Learning Model for Image Recognition using Keras](image_recognition.py)
-- [Image Prediction using saved model](image_prediction.py)
+- [Simple Neural Network in Python](https://github.com/a113ssa/nn-learn/tree/main/simple_nn)
+- [Simple Deep Learning Models for Image Recognition using Keras](https://github.com/a113ssa/nn-learn/tree/main/image_recognition)
